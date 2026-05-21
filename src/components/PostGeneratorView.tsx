@@ -276,7 +276,8 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
         mimeType: img.split(";")[0].split(":")[1] || "image/jpeg",
       }));
 
-      const res = await fetch("/api/analyze-image", {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+      const res = await fetch(`${API_BASE}/api/analyze-image`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ images: imagesPayload }),
@@ -326,7 +327,8 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
         content: msg.content,
       }));
 
-      const res = await fetch("/api/chat-message", {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+      const res = await fetch(`${API_BASE}/api/chat-message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -382,7 +384,8 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
       // Gather answers from dialog history
       const fullConversationText = chatLog.map(m => m.content).join("\n");
       
-      const res = await fetch("/api/generate-post", {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+      const res = await fetch(`${API_BASE}/api/generate-post`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -3,11 +3,18 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS for frontend requests
+app.use(cors({
+  origin: "*", // Allow all origins for now, can be restricted later
+  methods: ["GET", "POST", "OPTIONS"]
+}));
 
 // Enable JSON body parsing with high limit for images
 app.use(express.json({ limit: "20mb" }));
