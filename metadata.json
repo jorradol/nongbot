@@ -1,0 +1,6 @@
+{
+  "name": "NongBot",
+  "description": "น้องบอท (NongBot) - เอไอเขียนโพสต์และจัดเต็มแคปชันขายของออนไลน์อัตโนมัติจากรูปถ่าย",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

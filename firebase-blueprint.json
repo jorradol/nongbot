@@ -1,0 +1,120 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Represents a NongBot user account detailing profile information and credits balance.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique Firebase Authentication UID."
+        },
+        "name": {
+          "type": "string",
+          "description": "User's display name."
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the user account was created in Firestore."
+        },
+        "credits": {
+          "type": "integer",
+          "description": "Number of AI generation credits remaining for this user."
+        }
+      },
+      "required": ["uid", "name", "email", "createdAt", "credits"]
+    },
+    "Post": {
+      "title": "Generated Post",
+      "description": "Represents a content generation history record, containing uploaded product details, conversation steps, and the final ad copy.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of the owner of this post."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the uploaded product image in Firebase Storage."
+        },
+        "productInfo": {
+          "type": "object",
+          "description": "Metadata analyzed from the product image, like type, colors, target audience, style, selling points."
+        },
+        "aiConversation": {
+          "type": "array",
+          "description": "Log of step-by-step chat conversation with NongBot."
+        },
+        "generatedPost": {
+          "type": "object",
+          "description": "The generated advertisement content segments."
+        },
+        "hashtags": {
+          "type": "array",
+          "description": "List of associated hashtags."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of creation."
+        },
+        "platform": {
+          "type": "string",
+          "description": "The targeted social platform for the post, like Facebook, TikTok, Instagram."
+        },
+        "tone": {
+          "type": "string",
+          "description": "The desired tone style, professional, friendly, luxury, hard sale, viral."
+        }
+      },
+      "required": ["userId", "imageUrl", "createdAt"]
+    },
+    "CopyAnalytics": {
+      "title": "Copy Branding Attribution Analytics",
+      "description": "Logs when the user copies generated content, tracing length and system metadata to monitor smart branding.",
+      "type": "object",
+      "properties": {
+        "textSnippet": {
+          "type": "string",
+          "description": "Short partial text of the copied post content."
+        },
+        "length": {
+          "type": "integer",
+          "description": "Character count of the copied content."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the copy event occurred."
+        },
+        "userAgent": {
+          "type": "string",
+          "description": "User agent signature of the copier."
+        }
+      },
+      "required": ["textSnippet", "length", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Users private data and credit records."
+    },
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "User-generated postings and ad content translations."
+    },
+    "/copyAnalytics/{docId}": {
+      "schema": "CopyAnalytics",
+      "description": "Saves smart branding performance statistics."
+    }
+  }
+}

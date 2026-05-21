@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sarabun", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Sarabun", sans-serif;
+  
+  --color-brand-50: #fff7ed;
+  --color-brand-100: #ffedd5;
+  --color-brand-200: #fed7aa;
+  --color-brand-300: #fdbb74;
+  --color-brand-400: #fb923c;
+  --color-brand-500: #f97316;
+  --color-brand-600: #ea580c;
+  --color-brand-700: #c2410c;
+  --color-brand-800: #9a3412;
+  --color-brand-900: #7c2d12;
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.4);
+}
+
+/* Geometric Balance theme classes */
+.glass-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0; /* border-slate-200 */
+  box-shadow: 0 10px 15px -3px rgba(226, 232, 240, 0.3), 0 4px 6px -4px rgba(226, 232, 240, 0.3);
+}
+
+.glass-panel-dark {
+  background: #0f172a; /* bg-slate-900 */
+  border: 1px solid #1e293b;
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.15);
+}
+
+.glass-card-orange {
+  background: #ffffff;
+  border: 1px solid #fed7aa; /* orange-200 */
+  box-shadow: 0 12px 20px -3px rgba(249, 115, 22, 0.08), 0 4px 6px -4px rgba(249, 115, 22, 0.08);
+}
+
+.geo-badge-orange {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ea580c; /* orange-600 */
+  background-color: #fff7ed; /* orange-50 */
+  border: 1px solid #fed7aa; /* orange-200 */
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.geo-badge-gray {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #64748b; /* slate-500 */
+  background-color: #f8fafc; /* slate-50 */
+  border: 1px solid #e2e8f0; /* slate-200 */
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.geo-shadow-subtle {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
