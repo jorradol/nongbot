@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://nongbot-backend--nongbot-org.asia-southeast1.hosted.app";
+
 const ChatBubble: React.FC<{
   msg: ChatMessage;
   onUpdateMessage: (id: string, newContent: string) => void;
@@ -276,8 +278,7 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
         mimeType: img.split(";")[0].split(":")[1] || "image/jpeg",
       }));
 
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const res = await fetch(`${API_BASE}/api/analyze-image`, {
+      const res = await fetch(`${API_BASE_URL}/api/analyze-image`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ images: imagesPayload }),
@@ -327,8 +328,7 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
         content: msg.content,
       }));
 
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const res = await fetch(`${API_BASE}/api/chat-message`, {
+      const res = await fetch(`${API_BASE_URL}/api/chat-message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -384,8 +384,7 @@ export const PostGeneratorView: React.FC<PostGeneratorViewProps> = ({ setView })
       // Gather answers from dialog history
       const fullConversationText = chatLog.map(m => m.content).join("\n");
       
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const res = await fetch(`${API_BASE}/api/generate-post`, {
+      const res = await fetch(`${API_BASE_URL}/api/generate-post`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
