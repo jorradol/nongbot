@@ -10,3 +10,4 @@ env:
   - variable: GEMINI_API_KEY
     availability:
       - RUNTIME
+      - BUILD
